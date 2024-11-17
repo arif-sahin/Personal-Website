@@ -39,7 +39,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <motion.a
             whileHover={{ y: -2 }}
-            href="https://github.com"
+            href="https://github.com/arif-sahin"
             target="_blank"
             rel="https://github.com/arif-sahin"
             className="text-gray-600 hover:text-purple-600 transition-colors"
@@ -48,7 +48,7 @@ export default function Header() {
           </motion.a>
           <motion.a
             whileHover={{ y: -2 }}
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/arif-sahin/"
             target="_blank"
             rel="https://www.linkedin.com/in/arif-sahin/"
             className="text-gray-600 hover:text-blue-600 transition-colors"
