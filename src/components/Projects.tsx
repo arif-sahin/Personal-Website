@@ -5,7 +5,7 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     title: 'Statistical Calculations',
-    description: '',
+    description: 'Statistical calculations using Rust language',
     image: '',
     tech: ['Rust'],
     github: 'https://github.com/arif-sahin/istatistik-hesaplamalar-',
