@@ -9,6 +9,7 @@ const projects = [
     image: '',
     tech: ['Rust'],
     github: 'https://github.com/arif-sahin/istatistik-hesaplamalar-',
+    live: '_blank',
   },
 ];
 
