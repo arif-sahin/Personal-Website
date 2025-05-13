@@ -23,7 +23,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-600 mb-8"
           >
-            Backend Developer
+            Junior Software Engineer
           </motion.p>
           <motion.div
             initial={{ y: 20, opacity: 0 }}
