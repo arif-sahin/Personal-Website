@@ -7,7 +7,7 @@ const skillCategories = [
     name: 'Programming Languages',
     icon: <Code2 className="w-6 h-6 text-purple-600" />,
     skills: [
-      { name: 'Java', level: 60, description: 'Spring Boot, JPA, Maven' },
+      { name: 'Java', level: 60, description: 'Maven' },
       { name: 'Rust', level: 50, description: 'Systems programming, CLI tools' },
       { name: 'TypeScript', level: 50, description: 'React, Node.js development' },
       { name: 'Python', level: 50, description: 'Data analysis, Automation' }
@@ -18,14 +18,13 @@ const skillCategories = [
     icon: <Server className="w-6 h-6 text-purple-600" />,
     skills: [
       { name: 'Node.js', level: 50, description: 'Express, REST APIs' },
-      { name: 'Spring Boot', level: 55, description: 'Microservices, REST APIs' }
     ]
   },
   {
     name: 'Databases',
     icon: <Database className="w-6 h-6 text-purple-600" />,
     skills: [
-      { name: 'PostgreSQL', level: 45, description: 'RDBMS, Query optimization' },
+      { name: 'MSSQL', level: 45, description: 'RDBMS, Query optimization' },
       { name: 'MongoDB', level: 40, description: 'NoSQL, Document databases' }
     ]
   },
@@ -33,8 +32,7 @@ const skillCategories = [
     name: 'Version Control & Tools',
     icon: <Git className="w-6 h-6 text-purple-600" />,
     skills: [
-      { name: 'Git', level: 65, description: 'Version control, Collaboration' },
-      { name: 'Docker', level: 45, description: 'Containerization' }
+      { name: 'Git', level: 65, description: 'Version control, Collaboration' },      
     ]
   },
   {
@@ -50,7 +48,6 @@ const skillCategories = [
     icon: <Coffee className="w-6 h-6 text-purple-600" />,
     skills: [
       { name: 'Clean Code', level: 65, description: 'SOLID principles, Design patterns' },
-      { name: 'Testing', level: 60, description: 'Unit testing, Integration testing' }
     ]
   }
 ];
