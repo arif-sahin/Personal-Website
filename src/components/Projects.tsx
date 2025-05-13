@@ -11,6 +11,13 @@ const projects = [
     github: 'https://github.com/arif-sahin/istatistik-hesaplamalar-',
     live: '_blank',
   },
+  {
+    title: 'Secure Chat Application',
+    description: 'Secure Chat Application through Server - Client Architecture with AES and RSA Algorithms',
+    image: '',
+    tech: ['Python'],
+    github: 'https://github.com/arif-sahin/kriptolojiProje'
+  },
 ];
 
 export default function Projects() {
