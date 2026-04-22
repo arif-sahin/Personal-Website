@@ -1,103 +1,86 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Database, Server, Github as Git, Brain, Coffee } from 'lucide-react';
+import { Code2, Server, Database, Wrench } from 'lucide-react';
+import { type ReactNode } from 'react';
 
-const skillCategories = [
+interface SkillCategory {
+  name: string;
+  icon: ReactNode;
+  skills: string[];
+}
+
+const skillCategories: SkillCategory[] = [
   {
-    name: 'Programming Languages',
-    icon: <Code2 className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'Java', level: 60, description: 'Maven' },
-      { name: 'Rust', level: 50, description: 'Systems programming, CLI tools' },
-      { name: 'TypeScript', level: 50, description: 'React, Node.js development' },
-      { name: 'Python', level: 50, description: 'Data analysis, Automation' }
-    ]
+    name: 'Languages',
+    icon: <Code2 size={18} className="text-purple-600" />,
+    skills: ['Java', 'Rust', 'JavaScript', 'Python', 'C/C++', 'SQL'],
   },
   {
-    name: 'Backend Technologies',
-    icon: <Server className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'Node.js', level: 50, description: 'Express, REST APIs' },
-    ]
+    name: 'Frameworks & Tools',
+    icon: <Server size={18} className="text-purple-600" />,
+    skills: ['FastAPI', 'React.js', 'Android Studio', 'Redis', 'Railway'],
   },
   {
     name: 'Databases',
-    icon: <Database className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'MSSQL', level: 45, description: 'RDBMS, Query optimization' },
-      { name: 'MongoDB', level: 40, description: 'NoSQL, Document databases' }
-    ]
+    icon: <Database size={18} className="text-purple-600" />,
+    skills: ['Oracle PL/SQL', 'SQL', 'Redis', 'Firebase'],
   },
   {
-    name: 'Version Control & Tools',
-    icon: <Git className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'Git', level: 65, description: 'Version control, Collaboration' },      
-    ]
+    name: 'Other',
+    icon: <Wrench size={18} className="text-purple-600" />,
+    skills: ['Algorithms', 'Git', 'REST APIs', 'Data Structures'],
   },
-  {
-    name: 'Soft Skills',
-    icon: <Brain className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'Problem Solving', level: 75, description: 'Analytical thinking, Debug skills' },
-      { name: 'Team Collaboration', level: 70, description: 'Agile methodologies' }
-    ]
-  },
-  {
-    name: 'Development Practices',
-    icon: <Coffee className="w-6 h-6 text-purple-600" />,
-    skills: [
-      { name: 'Clean Code', level: 65, description: 'SOLID principles, Design patterns' },
-    ]
-  }
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-3xl font-bold text-center text-gray-900 mb-4"
         >
-          Skills & Expertise
+          Skills
         </motion.h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {skillCategories.map((category, categoryIndex) => (
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-center text-gray-400 text-sm mb-14 max-w-md mx-auto"
+        >
+          Technologies and tools I work with.
+        </motion.p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {skillCategories.map((category, catIdx) => (
             <motion.div
-              key={categoryIndex}
+              key={catIdx}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: categoryIndex * 0.1 }}
-              className="bg-white p-6 rounded-xl shadow-sm"
+              transition={{ delay: catIdx * 0.1 }}
+              className="bg-gray-50/60 rounded-2xl p-6 border border-gray-100"
             >
-              <div className="flex items-center gap-3 mb-6">
+              {/* Category Header */}
+              <div className="flex items-center gap-2 mb-5">
                 {category.icon}
-                <h3 className="text-xl font-semibold">{category.name}</h3>
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {category.name}
+                </h3>
               </div>
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <span className="font-medium">{skill.name}</span>
-                        <p className="text-sm text-gray-600">{skill.description}</p>
-                      </div>
-                      <span className="text-sm text-gray-600">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-gray-200 rounded-full">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, ease: 'easeOut' }}
-                        className="h-full bg-gradient-to-r from-purple-600 to-blue-500 rounded-full"
-                      />
-                    </div>
-                  </div>
+
+              {/* Skill Pills */}
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIdx) => (
+                  <motion.span
+                    key={skillIdx}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1.5 bg-white text-gray-600 text-xs font-medium rounded-full border border-gray-200 hover:border-purple-300 hover:text-purple-600 transition-colors duration-200 cursor-default"
+                  >
+                    {skill}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

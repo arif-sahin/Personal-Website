@@ -1,85 +1,139 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  github?: string;
+  live?: string;
+}
+
+const projects: Project[] = [
   {
-    title: 'Statistical Calculations',
-    description: 'Statistical calculations using Rust language',
-    image: '',
-    tech: ['Rust'],
-    github: 'https://github.com/arif-sahin/istatistik-hesaplamalar-',
-    live: '_blank',
+    title: 'Full-Stack ChatBot',
+    description:
+      'Built a full-stack AI chatbot with a React frontend and Python backend, integrated with Cohere API. Deployed on Railway using worker, server, and Redis services.',
+    tech: ['React.js', 'Python', 'Cohere API', 'Redis', 'Railway', 'FastAPI'],
+    github: 'https://github.com/arif-sahin',
+    live: 'https://chat.arifsahin.com.tr',
   },
   {
-    title: 'Secure Chat Application',
-    description: 'Secure Chat Application through Server - Client Architecture with AES and RSA Algorithms',
-    image: '',
-    tech: ['Python'],
-    github: 'https://github.com/arif-sahin/kriptolojiProje'
+    title: 'Private-Messaging System',
+    description:
+      'Designed and implemented a secure client-server messaging system using hybrid AES and RSA encryption. Clients can digitally sign their messages to prove identity.',
+    tech: ['Python', 'AES', 'RSA', 'Cryptography'],
+    github: 'https://github.com/arif-sahin/kriptolojiProje',
+  },
+  {
+    title: 'Gezgir App',
+    description:
+      'A mobile application where users can share posts about places they have visited and pin their locations on a map. Integrated Firebase Realtime-Database, Authentication, and Google Maps API.',
+    tech: ['Android Studio', 'Firebase', 'Google Maps API', 'Java'],
+    github: 'https://github.com/arif-sahin',
+  },
+  {
+    title: 'Avacabus — APR/APY Calculator',
+    description:
+      'Web tool calculating real-time APR/APY for Avalanche DeFi protocols with a serverless API backend.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Hono', 'Serverless API'],
+    live: 'https://avax-apr-calculations.vercel.app',
+  },
+  {
+    title: 'Store Database Model',
+    description:
+      'Designed a normalized relational database schema for a store system using SQL Developer Data Modeler. Implemented stored procedures, triggers, and views with Oracle PL/SQL.',
+    tech: ['SQL', 'Oracle PL/SQL'],
+    github: 'https://github.com/arif-sahin/Store/tree/main',
+  },
+  {
+    title: 'Statistical Calculations',
+    description:
+      'Developed programs for various probability and statistics calculations using Rust for a university course.',
+    tech: ['Rust'],
+    github: 'https://github.com/arif-sahin/istatistik-hesaplamalar-',
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-24 bg-gray-50/50">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-3xl font-bold text-center text-gray-900 mb-4"
         >
-          Featured Projects
+          Projects
         </motion.h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-center text-gray-400 text-sm mb-14 max-w-md mx-auto"
+        >
+          A selection of projects I've built during my studies and personal exploration.
+        </motion.p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              transition={{ delay: index * 0.08, duration: 0.4 }}
+              whileHover={{ y: -4 }}
+              className="group bg-white rounded-2xl border border-gray-100 p-6 flex flex-col transition-shadow duration-300 hover:shadow-lg hover:shadow-purple-100/40"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-4">
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+                {project.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-gray-400 leading-relaxed mb-4 flex-1">
+                {project.description}
+              </p>
+
+              {/* Tech Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="px-2.5 py-1 bg-gray-50 text-gray-500 text-xs font-medium rounded-full border border-gray-100"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Links */}
+              <div className="flex gap-4 pt-4 border-t border-gray-50">
+                {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-purple-600 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-900 transition-colors"
                   >
-                    <Github size={20} />
-                    Code
+                    <Github size={14} />
+                    Source
                   </a>
+                )}
+                {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-purple-600 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-purple-500 hover:text-purple-700 transition-colors"
                   >
-                    <ExternalLink size={20} />
-                    Live Demo
+                    <ExternalLink size={14} />
+                    Live
                   </a>
-                </div>
+                )}
               </div>
             </motion.div>
           ))}
